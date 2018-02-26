@@ -34,7 +34,6 @@
                     }
                 }
             }
-
         },
         pause:function () {
             this.speed=0;

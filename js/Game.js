@@ -18,14 +18,26 @@
                 //console.log(allImageObj,allImageCount,loadImageCount);
                 if(allImageCount == loadImageCount){
                     self.allImageObj=allImageObj;
+                    self.ready();
+                }
+            });
+        },
+        //准备状态
+        ready:function () {
+            var self = this;
+            // 是否开始
+            this.isGameBegin = true;
+            game.ctx.drawImage(game.allImageObj['gamebegin'],(game.canvas.width-337)*0.5,(game.canvas.height-75)*0.5);
+            game.canvas.addEventListener('click', function () {
+                if (self.isGameBegin){
+                    // 改变游戏开始状态
+                    self.isGameBegin = false;
                     self.run();
                 }
             });
-
         },
         run:function () {
             var self=this;
-
             this.timer=setInterval(function () {
                 self.runLoop();
             },1000/this.fps);
